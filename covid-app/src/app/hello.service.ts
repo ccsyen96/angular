@@ -45,8 +45,6 @@ public getLoggingWithPromise(value: string): Promise<any>
 
 
           });// new Promise
-    }//end getLoggingWithPromise
-
-      
+      }//end getLoggingWithPromise    
 
 }
