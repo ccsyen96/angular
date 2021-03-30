@@ -14,6 +14,8 @@ import { CovidCasesDesc } from 'src/model/CovidCasesDesc';
 
 })
 export class CovidComponent implements OnInit {
+  public data: any;
+
   public covidTotalDaily: any;
 
   public covidTotalDesc: any[] = [];
@@ -35,15 +37,25 @@ export class CovidComponent implements OnInit {
 
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit():Promise<void>{
+    
     this.descObject = {};
     this.updateDesc = {};
     this.postDesc = {};
+    await this.totalTableRows();
+    this.descObject = this.data;
     this.getCovid();
     this.getCovidDesc();
 
-    console.log("Covid Component Inited");
-    console.log("Total of Description Column Row --->" + this.descObject.length);
+    console.log("Covid Component Inited");  
+    console.log("Total of Description Column Row ---> " + this.descObject.length);  
+  }
+
+  async totalTableRows(): Promise<any>{
+    
+    return this.descObject = await this.covidApiService.getCovidDesc().toPromise().then((data: any) =>{
+      this.data = data;
+    });
   }
 
   getCovid(): any {
@@ -64,6 +76,7 @@ export class CovidComponent implements OnInit {
     this.covidApiService.getCovidDesc().subscribe((data: any) => {
       console.log(data);
       this.covidTotalDesc = data;
+      //console.log("Total of Description Column Row --->" + this.covidTotalDesc.length);
     });
 
     return this.covidTotalDesc;
@@ -80,6 +93,7 @@ export class CovidComponent implements OnInit {
   }
 
   deleteDesc() {
+
     console.log("covidTotalDesc length-->" + this.covidTotalDesc.length);
 
     if (this.covidTotalDesc.length == 0) {
@@ -91,11 +105,10 @@ export class CovidComponent implements OnInit {
           this.getCovidDesc();
         });
     }
-
-
   }
 
   addDesc() {
+
     this.covidApiService.addDesc(this.newDesc).then(
       resolve => {
         this.getCovidDesc();
@@ -115,7 +128,7 @@ export class CovidComponent implements OnInit {
     }
   }
   
-  // TODO: Practical 7 - complete the backend implementation only below
+  // Practical 7 - complete the backend implementation only below
   putDesc() {
 
     this.covidApiService.putDesc(this.updateDesc).then(
@@ -124,12 +137,20 @@ export class CovidComponent implements OnInit {
       });
   }
 
-  // TODO: Practical 7 - complete the implementation below
+  // Practical 7 - complete the implementation below
   // It should have a promise sync function 
 
   addPost() {
 
     this.covidApiService.addPost(this.postDesc).then(
+      resolve => {
+        // if the method below being called using async way, then the table desc wont be updated accordingly after data added
+        this.getCovidDesc();
+      }); 
+  }
+  deletePost() {
+
+    this.covidApiService.deletePost(this.newDesc).then(
       resolve => {
         // if the method below being called using async way, then the table desc wont be updated accordingly after data added
         this.getCovidDesc();

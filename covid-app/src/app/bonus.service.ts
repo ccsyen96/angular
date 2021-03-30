@@ -1,28 +1,24 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
+import { Injectable } from '@angular/core';
 import { GlobalConstants } from 'src/environments/GlobalConstants';
 import { GlobalMethods } from 'src/environments/GlobalMethods';
+import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CovidApiService {
+export class BonusService {
 
   constructor(private httpClient: HttpClient, private confirmationDialogService: ConfirmationDialogService) { }
 
-  public getCovid(): any {
-    return this.httpClient.get(`http://localhost:8081/covid/get/latest`, { responseType: 'text' });
-  }
-
-  public getCovidDesc(): any {
-    return this.httpClient.get(`http://localhost:8081/covid/get/desc`);
+  public getBonusDesc(): any {
+    return this.httpClient.get(`http://localhost:8081/covid/get/bonus`);
   }
 
   public deleteDesc(id: number): Promise<any> {
 
     return new Promise((resolve) => {
-      return this.httpClient.delete(`http://localhost:8081/covid/delete?id=` + id).subscribe((data: any) => {
+      return this.httpClient.delete(`http://localhost:8081/bonus/delete?id=` + id).subscribe((data: any) => {
         console.log(data);
         resolve(data);
 
@@ -36,10 +32,10 @@ export class CovidApiService {
     });
   }
 
-  public addDesc(desc: string): Promise<any> {
+  public addDesc(bonus: string): Promise<any> {
 
     return new Promise((resolve) => {
-      return this.httpClient.get(`http://localhost:8081/covid/add?desc=` + desc).subscribe((data: any) => {
+      return this.httpClient.get(`http://localhost:8081/bonus/add?bonus=` + bonus).subscribe((data: any) => {
 
         console.log(data);
         resolve(data);
@@ -58,7 +54,7 @@ export class CovidApiService {
   public putDesc(body : any): Promise<any> {
 
     return new Promise((resolve) => {
-      return this.httpClient.put(`http://localhost:8081/covid/put`, body).subscribe((data: any) => {
+      return this.httpClient.put(`http://localhost:8081/bonus/put`, body).subscribe((data: any) => {
 
         console.log(data);
         resolve(data);
@@ -72,13 +68,11 @@ export class CovidApiService {
 
     });
   }
-    // Practical 7 - complete the implementation below
-  // It should have a promise sync function 
 
   public addPost(body: any): Promise<any> {
 
     return new Promise((resolve) => {
-    return this.httpClient.post(`http://localhost:8081/covid/post`, body).subscribe((data: any) => {
+    return this.httpClient.post(`http://localhost:8081/bonus/post`, body).subscribe((data: any) => {
 
       console.log(data);
       resolve(data);
@@ -92,10 +86,10 @@ export class CovidApiService {
 
     });
   }
-  public deletePost(desc: string): Promise<any> {
+  public deletePost(bonus: string): Promise<any> {
 
     return new Promise((resolve) => {
-    return this.httpClient.delete(`http://localhost:8081/covid/delete/soap?desc=`+ desc).subscribe((data: any) => {
+    return this.httpClient.delete(`http://localhost:8081/bonus/delete/soap?bonus=`+ bonus).subscribe((data: any) => {
 
       console.log(data);
       resolve(data);

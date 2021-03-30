@@ -1,6 +1,6 @@
 <div class="container" role="main">
   <h2>
-    Daily Covid Update - {{covidTotalDaily}}
+    Bonus Service
   </h2>
 
   <!-- Add record starts  -->
@@ -8,7 +8,7 @@
   <legend style="color:black;font-weight:bold;">Section A. Add New Record</legend>
 
   <label for="Description">Description</label>
-  <input type="text" id="desc" [(ngModel)]="newDesc" name="desc">
+  <input type="text" id="bonus" [(ngModel)]="newBonus" name="bonus">
   <p></p>
 
   <input type="submit" value="Add" (click)="addDesc()">
@@ -18,21 +18,21 @@
   <br><br><br>
   <legend style="color:black;font-weight:bold;">Section B. Delete record</legend>
   <legend style="color:black;font-weight:bold;">Select Records to view or Delete</legend>
-  <div *ngIf="covidTotalDesc != undefined">
+  <div *ngIf="bonusTotalDesc != undefined">
 
-    <select [(ngModel)]="desc" name="desc" placeholder="select" (change)="onSelectDesc($event)" multiple="multiple">
-      <option *ngFor="let table of covidTotalDesc" [value]="table">
+    <select [(ngModel)]="bonus" name="bonus" placeholder="select" (change)="onSelectDesc($event)" multiple="multiple">
+      <option *ngFor="let table of bonusTotalDesc" [value]="table">
         {{table.description}}
       </option>
     </select>
   </div>
 
   <form>
-    <div *ngIf="descObject != undefined" class="form-group">
+    <div *ngIf="bonusObject != undefined" class="form-group">
       <label>ID</label>
-      <input type="text" id="id" [(ngModel)]="descObject.id" name="id" disabled>
+      <input type="text" id="id" [(ngModel)]="bonusObject.id" name="id" disabled>
       <label>Description</label>
-      <input type="text" id="desc" [(ngModel)]="descObject.description" name="desc" disabled>
+      <input type="text" id="bonus" [(ngModel)]="bonusObject.description" name="bonus" disabled>
       <p></p>
       <input type="submit" value="Delete" (click)="deleteDesc()">
     </div>
@@ -43,21 +43,21 @@
   <br><br><br>
   <legend style="color:black;font-weight:bold;">Section C. Update record</legend>
   <legend style="color:black;font-weight:bold;">Select Records to Update</legend>
-  <div *ngIf="covidTotalDesc != undefined">
+  <div *ngIf="bonusTotalDesc != undefined">
 
-    <select [(ngModel)]="desc" name="desc" placeholder="select" (change)="onSelectUpdateDesc($event)" multiple="multiple">
-      <option *ngFor="let table of covidTotalDesc" [value]="table">
+    <select [(ngModel)]="bonus" name="bonus" placeholder="select" (change)="onSelectUpdateDesc($event)" multiple="multiple">
+      <option *ngFor="let table of bonusTotalDesc" [value]="table">
         {{table.description}}
       </option>
     </select>
   </div>
 
   <form>
-    <div *ngIf="descObject != undefined" class="form-group">
+    <div *ngIf="bonusObject != undefined" class="form-group">
       <label>ID</label>
-      <input type="text" id="id" [(ngModel)]="updateDesc.id" name="id" disabled >
-      <label>Description</label>
-      <input type="text" id="desc" [(ngModel)]="updateDesc.description" name="desc" >
+      <input type="text" id="id" [(ngModel)]="updateBonus.id" name="id" disabled >
+      <label>Description</label><br>
+      <input type="text" id="bonus" [(ngModel)]="updateBonus.description" name="bonus" >
       <p></p>
       <input type="submit" value="Update" (click)="putDesc()">
     </div>
@@ -68,8 +68,8 @@
     <br><br><br>
     <legend style="color:black;font-weight:bold;">Section D. Add Post Record</legend>
   
-    <label for="Description">Description</label>
-    <input type="text" id="postDesc" [(ngModel)]="postDesc.description" name="post">
+    <label for="Description">Description</label><br>
+    <input type="text" id="postBonus" [(ngModel)]="postBonus.description" name="post">
     <p></p>
   
     <input type="submit" value="Post" (click)="addPost()">
@@ -79,8 +79,8 @@
   <br><br><br>
   <legend style="color:black;font-weight:bold;">Section E. Delete with Confirm</legend>
 
-  <label for="Description">Description</label>
-  <input type="text" id="desc" [(ngModel)]="newDesc" name="desc">
+  <label for="Description">Description</label><br>
+  <input type="text" id="bonus" [(ngModel)]="newBonus" name="bonus">
   <p></p>
 
   <input type="submit" value="Delete with Confirmation" (click)="deletePost()">
