@@ -75,22 +75,6 @@
     <input type="submit" value="Post" (click)="addPost()">
   <!-- Add Post ends  -->
 
-<!-- Delete with Confirm starts  -->
-  <br><br><br>
-  <legend style="color:black;font-weight:bold;">Section E. Delete with Confirm</legend>
-
-  <label for="Description">Description</label>
-  <input type="text" id="desc" [(ngModel)]="newDesc" name="desc">
-  <p></p>
-
-  <input type="submit" value="Delete with Confirmation" (click)="deletePost()">
-<!-- Delete with Confirm ends  -->
-
-<!-- Delete Duplications starts  -->
-<br><br><br>
-<legend style="color:black;font-weight:bold;">Section F. Remove Duplicate Description</legend>
-
-<input type="submit" value="Remove" (click)="remove()">
-<!-- Delete Duplications ends  -->
+  <app-covid-delete></app-covid-delete>
 
 </div>

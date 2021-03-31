@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { BonusService } from '../bonus.service';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
@@ -7,7 +6,7 @@ import { GlobalConstants } from 'src/environments/GlobalConstants';
 @Component({
   
   selector: 'app-bonus',
-  styleUrls: ['./bonus.component.css'],
+  styleUrls: ['../../../src/app/share/css/share.component.css'],
   templateUrl: './bonus.component.html',
 
 })
@@ -27,7 +26,7 @@ export class BonusComponent implements OnInit {
   public postBonus: any;
 
   constructor(
-    private httpClient: HttpClient,
+  
     public bonusService: BonusService,
     private confirmationDialogService: ConfirmationDialogService
 

@@ -9,7 +9,7 @@ import { CovidCasesDesc } from 'src/model/CovidCasesDesc';
 @Component({
   selector: 'app-covid',
   providers: [CovidApiService],
-  styleUrls: ['./covid.component.css'],
+  styleUrls: ['../../../src/app/share/css/share.component.css'],
   templateUrl: './covid.component.html',
 
 })
@@ -150,21 +150,21 @@ export class CovidComponent implements OnInit {
         this.getCovidDesc();
       }); 
   }
-  deletePost() {
+  // deletePost() {
 
-    this.covidApiService.deletePost(this.newDesc).then(
-      resolve => {
-        // if the method below being called using async way, then the table desc wont be updated accordingly after data added
-        this.getCovidDesc();
-      }); 
-  }
-  remove() {
+  //   this.covidApiService.deletePost(this.newDesc).then(
+  //     resolve => {
+  //       // if the method below being called using async way, then the table desc wont be updated accordingly after data added
+  //       this.getCovidDesc();
+  //     }); 
+  // }
+  // remove() {
 
-    this.covidApiService.remove().then(
-      resolve => {
-        // if the method below being called using async way, then the table desc wont be updated accordingly after data added
-        this.getCovidDesc();
-      }); 
-  }
+  //   this.covidApiService.remove().then(
+  //     resolve => {
+  //       // if the method below being called using async way, then the table desc wont be updated accordingly after data added
+  //       this.getCovidDesc();
+  //     }); 
+  // }
 
 }
