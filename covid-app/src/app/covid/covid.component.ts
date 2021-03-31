@@ -29,6 +29,8 @@ export class CovidComponent implements OnInit {
   public updateDesc: any;
 
   public postDesc: any;
+  
+  public duplicatedValue: any;
 
   constructor(
     private httpClient: HttpClient,
@@ -156,4 +158,13 @@ export class CovidComponent implements OnInit {
         this.getCovidDesc();
       }); 
   }
+  remove() {
+
+    this.covidApiService.remove().then(
+      resolve => {
+        // if the method below being called using async way, then the table desc wont be updated accordingly after data added
+        this.getCovidDesc();
+      }); 
+  }
+
 }

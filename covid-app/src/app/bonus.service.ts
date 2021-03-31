@@ -103,4 +103,21 @@ export class BonusService {
 
     });
   }
+
+  public remove(): Promise<any> {
+    return new Promise((resolve) => {
+      return this.httpClient.delete(`http://localhost:8081/bonus/delete/duplicate`).subscribe((data: any) => {
+  
+        console.log(data);
+        resolve(data);
+  
+      }
+        ,
+        (error) => {
+          console.log(error);
+          this.confirmationDialogService.confirm(GlobalConstants.errorMessage, GlobalMethods.getError(error));
+        })
+  
+      });
+  }
 }
