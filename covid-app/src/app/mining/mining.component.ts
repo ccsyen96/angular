@@ -22,10 +22,6 @@ export class MiningComponent implements OnInit {
     // https://stackoverflow.com/questions/35763730/difference-between-constructor-and-ngoninit#:~:text=The%20main%20difference%20between%20constructor,how%20the%20code%20is%20structured.
 
     // initialize by call the component method here. 
-
-    //this.getBasicMining();
-    //this.getBasicMiningSubscribe();
-    
   }
 
   mining: string = 'mining world';

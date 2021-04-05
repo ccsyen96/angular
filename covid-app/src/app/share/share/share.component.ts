@@ -17,7 +17,9 @@ export class ShareComponent implements OnInit {
 
   ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // onInit and Constructor difference
+  }
   
   deletePost() {
 
